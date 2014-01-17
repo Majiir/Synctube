@@ -1,0 +1,14 @@
+{
+	"404": {
+		"title": "Not Found",
+		"description": "The server could not locate the requested page."
+	},
+	"500": {
+		"title": "Internal Server Error",
+		"description": "The server encountered an internal error and could not complete the request."
+	},
+	"503": {
+		"title": "Service Unavailable",
+		"description": "Our servers are under heavy load. Please repeatedly refresh the page in a desperate attempt to make it load."
+	}
+}

@@ -12,6 +12,7 @@
     "devDependencies": {
         "bower": "1.2.x",
         "grunt-contrib-less": "0.9.x",
+        "grunt-mustache-render": "1.2.x",
         "grunt-cli": "0.1.x",
         "grunt": "0.4.x"
     },
