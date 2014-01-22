@@ -1,0 +1,12 @@
+{{> header.html}}
+<div class="container">
+  <p class="lead">Rooms let you watch the same video at the same time. You can create your own room or join one of these.</p>
+  <ul>
+  {{#rooms}}
+    <li>
+      <a href="/rooms/{{name}}">{{name}}</a>
+    </li>
+  {{/rooms}}
+  </ul>
+</div>
+{{> footer.html}}

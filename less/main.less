@@ -7,3 +7,117 @@
 
 @import 'brand.less';
 @import 'navbar.less';
+
+////
+
+
+// Content Sections
+
+.content-player {
+	.make-sm-column(12);
+	.make-md-column(9);
+	.make-lg-column(8);
+	.make-lg-column-push(2);
+}
+
+.content-panel-media {
+	.make-sm-column(6);
+	.make-sm-column-pull(6);
+	.make-md-column(4);
+	.make-md-column-pull(0);
+	.make-lg-column(2);
+	.make-lg-column-pull(10);
+}
+
+.content-panel-social {
+	.make-sm-column(6);
+	.make-sm-column-push(6);
+	.make-md-column(3);
+	.make-md-column-push(0);
+	.make-lg-column(2);
+	.make-lg-column-push(2);
+}
+
+.content-panel-browse {
+	.make-sm-column(12);
+	.make-md-column(8);
+	.make-lg-column(12);
+}
+
+
+////
+
+// TODO: Create custom .make() mixins that don't use @grid-gutter-width
+@grid-gutter-width: 0;
+@navbar-padding-horizontal: 15px; // reset navbar padding since it's based on grid gutters
+
+////
+
+@playerAspectRatio: 16 / 9;
+
+@list-group-bg: darken(@gray-darker, 5%);
+
+.navbar {
+	margin-bottom: 0;
+
+	+ * {
+		margin-top: @navbar-margin-bottom;
+	}
+}
+
+div.row {
+	margin-top: 0;
+}
+
+@nav-tabs-active-link-hover-bg:             @gray-dark;
+@nav-link-hover-bg:                         darken(@gray-darker, 5%);
+
+@nav-link-padding: 5px 15px;
+
+@brand-primary: @gray-dark;
+
+// Navbar colors
+// -------------------------
+
+// "Panel" layouts
+// -------------------------
+
+#player-wrapper {
+	position: relative;
+	width: 100%;
+	padding-top: 100% / @playerAspectRatio;
+}
+
+.side-panel-wrapper {
+	position: relative;
+	width: 100%;
+	padding-top: 4 * 100% / @playerAspectRatio;
+}
+
+.side-panel,
+#player {
+	border: none;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+}
+
+@panel-border: 1px solid @panel-inner-border;
+
+.side-panel-left {
+	.side-panel;
+	border-right: @panel-border;
+}
+
+.side-panel-right {
+	.side-panel;
+	border-left: @panel-border;
+}
+
+.bottom-panel {
+	border-top: @panel-border;
+}
