@@ -1,9 +1,104 @@
 {{> header.html}}
-<script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/0.9.16/socket.io.min.js"></script>
-<script src="/room.js"></script>
-<div class="container">
-  <div id="player-wrapper">
-    <div id="player"></div>
+
+<div class="room-content">
+  <div class="playlist-content">
+
+<div class="info-pane">
+  <h4>Now Playing</h4>
+  <p>Girls` Generation(소녀시대) _ Gee _ MusicVideo </p>
+</div>
+
+<div id="video-queue">
+  <div>
+
+<div class="nano">
+  <div class="nano-content">
+    <div class="list-group">
+      <a href="#" class="list-group-item">Dapibus ac facilisis in</a><a href="#" class="list-group-item">Morbi leo risus</a><a href="#" class="list-group-item">Porta ac consectetur ac</a><a href="#" class="list-group-item">Vestibulum at eros</a><a href="#" class="list-group-item">Dapibus ac facilisis in</a><a href="#" class="list-group-item">Morbi leo risus</a><a href="#" class="list-group-item">Porta ac consectetur ac</a><a href="#" class="list-group-item">Vestibulum at eros</a><a href="#" class="list-group-item">Dapibus ac facilisis in</a><a href="#" class="list-group-item">Morbi leo risus</a><a href="#" class="list-group-item">Porta ac consectetur ac</a><a href="#" class="list-group-item">Vestibulum at eros</a><a href="#" class="list-group-item">Dapibus ac facilisis in</a><a href="#" class="list-group-item">Morbi leo risus</a><a href="#" class="list-group-item">Porta ac consectetur ac</a><a href="#" class="list-group-item">Vestibulum at eros</a><a href="#" class="list-group-item">Dapibus ac facilisis in</a><a href="#" class="list-group-item">Morbi leo risus</a><a href="#" class="list-group-item">Porta ac consectetur ac</a><a href="#" class="list-group-item">Vestibulum at eros</a><a href="#" class="list-group-item">Dapibus ac facilisis in</a><a href="#" class="list-group-item">Morbi leo risus</a><a href="#" class="list-group-item">Porta ac consectetur ac</a><a href="#" class="list-group-item">Vestibulum at eros</a><a href="#" class="list-group-item">Dapibus ac facilisis in</a><a href="#" class="list-group-item">Morbi leo risus</a><a href="#" class="list-group-item">Porta ac consectetur ac</a><a href="#" class="list-group-item">Vestibulum at eros</a>
+    </div>
   </div>
 </div>
+
+<div class="button-panel">
+  <button type="button" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-plus"></span></button>
+  <button type="button" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-repeat"></span></button>
+  <button type="button" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-random"></span></button>
+  <span class="small pull-right">129 videos, length: 3:40:21</span>
+</div>
+
+  </div>
+</div>
+
+  </div>
+  <div class="player-content">
+
+<div id="player-wrapper">
+  <div id="player" style="background-color: #060;">
+    {{! <img src="http://i1.ytimg.com/vi/gq0Ug11Avec/maxresdefault.jpg" class="img-responsive"> }}
+  </div>
+</div>
+
+  </div>
+  <div class="social-content">
+
+<div class="info-pane">
+  <h4>Room Info</h4>
+  <p>Room name: {{name}}</p>
+  <p>Connected users: {{connected}}</p>
+</div>
+
+<div id="chat-messages">
+  <div>
+
+<div class="nano">
+  <div class="nano-content">
+    <ul class="list-unstyled">
+      <li><h5>Majiir</h5><p>Dick.</p></li><li><h5>kaisest</h5><p>Ass.</p></li><li><h5>Majiir</h5><p>Dickass.</p></li><li><h5>kaisest</h5><p>Dick-er-ass.</p></li><li><h5>Majiir</h5><p>...</p></li><li><h5>kaisest</h5><p>Dick-er-er-ass-er.</p></li><li><h5>Majiir</h5><p>......</p></li><li><h5>Majiir</h5><p>Dick.</p></li><li><h5>kaisest</h5><p>Ass.</p></li><li><h5>Majiir</h5><p>Dickass.</p></li><li><h5>kaisest</h5><p>Dick-er-ass.</p></li><li><h5>Majiir</h5><p>...</p></li><li><h5>kaisest</h5><p>Dick-er-er-ass-er.</p></li><li><h5>Majiir</h5><p>......</p></li>
+    </ul>
+  </div>
+</div>
+
+<form class="form">
+  <div class="form-group">
+    <label class="sr-only" for="exampleInputEmail2">Chat message</label>
+    <input type="text" class="form-control input-sm" id="chatInput" placeholder="Type a message">
+  </div>
+</form>
+
+  </div>
+</div>
+
+  </div>
+  <div class="video-content">
+    <div>
+
+    </div>
+  </div>
+  <div class="browse-content">
+    <div>
+
+    </div>
+  </div>
+  <div class="roominfo-content">
+    <div>
+
+    </div>
+  </div>
+
+</div>
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/0.9.16/socket.io.min.js"></script>
+{{! <script src="/room.js"></script> }}
+<script src="/jquery.nanoscroller.min.js"></script>
+<script>
+$(function() {
+  $('.nano').nanoScroller({
+    paneClass: 'nano-pane',
+    sliderClass: 'nano-slider',
+    contentClass: 'nano-content',
+    alwaysVisible: true,
+  });
+});
+</script>
 {{> footer.html}}

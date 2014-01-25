@@ -1,0 +1,23 @@
+@import 'nanoscroller/bin/css/nanoscroller.less';
+
+@nanoClass: ~'nano';
+@paneClass: ~'nano-pane';
+@sliderClass: ~'nano-slider';
+@contentClass: ~'nano-content';
+
+.@{nanoClass} {
+  .@{contentClass} {
+    padding-right: 11px;
+  }
+  > .@{paneClass} {
+    @topMargin: 1px;
+    //background: rgba(92,92,92,.25);
+    background: @gray-even-darker;
+    margin-top: @topMargin;
+    margin-bottom: @topMargin;
+    > .@{sliderClass} {
+      background: #333;
+      //background: rgba(92,92,92,.5);
+    }
+  }
+}

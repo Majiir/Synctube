@@ -3,8 +3,142 @@
 @import 'bootswatch/cyborg/bootswatch.less';
 @import 'bootstrap/less/utilities.less';
 
+@icon-font-path: '//netdna.bootstrapcdn.com/bootstrap/3.0.3/fonts/';
+
 @gray-even-darker: #181818;
 
 @import 'brand.less';
 @import 'navbar.less';
 @import 'player.less';
+@import 'nanoscroller.less';
+
+@list-group-bg:               @body-bg;
+@list-group-border:           @gray-darker; /* TODO: Figure out what navbar is using. */
+@list-group-border-radius:    0;
+
+@list-group-hover-bg:         @gray-even-darker;
+@list-group-active-color:     @component-active-color;
+@list-group-active-bg:        @gray-dark;
+@list-group-active-border:    @list-group-active-bg;
+
+@list-group-link-color:          @text-color;
+@list-group-link-heading-color:  #fff;
+
+.list-group-item {
+	padding: 5px 10px;
+}
+
+#video-queue {
+	.fixed-ratio (@playerAspectRatio / 4, 30px, @paneHeight);
+}
+
+#chat-messages {
+	.fixed-ratio (@playerAspectRatio / 4, 30px, @paneHeight);
+
+	ul {
+		padding-left: 10px;
+	}
+	ul > li > h5 {
+		margin-bottom: 5px;
+	}
+
+	//padding-bottom: 30px
+}
+
+.fixed-ratio (@ratio, @bottom-padding: 0, @top-padding: 0) {
+	position: relative;
+	width: 100%;
+	padding-top: 100% / @ratio;
+
+	& > * {
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 100%;
+		width: 100%;
+		padding-bottom: @bottom-padding;
+		padding-top: @top-padding;
+	}
+}
+
+.room-content {
+	.make-row(0);
+	margin-top: 0;
+}
+
+.playlist-content {
+	.make-xs-column(12, 0);
+	.make-sm-column(2, 0);
+}
+
+.player-content {
+	.make-xs-column(12, 0);
+	.make-sm-column(8, 0);
+}
+
+.social-content {
+	.make-xs-column(12, 0);
+	.make-sm-column(2, 0);
+}
+
+.video-content {
+	.make-xs-column(12, 0);
+	.make-sm-column(2, 0);
+}
+
+.browse-content {
+	.make-xs-column(12, 0);
+	.make-sm-column(8, 0);
+}
+
+.roominfo-content { // todo: rename
+	.make-xs-column(12, 0);
+	.make-sm-column(2, 0);
+}
+
+//
+
+@paneHeight: 100px;
+
+.info-pane {
+	padding: 0 10px;
+	background-color: @gray-even-darker;
+	height: @paneHeight;
+	margin-bottom: -@paneHeight;
+	overflow: hidden;
+}
+
+.button-panel {
+	background-color: @gray-even-darker;
+	height: 30px;
+	padding: 4px;
+
+	span.pull-right {
+		display: block;
+		height: 22px;
+	}
+}
+
+#chatInput {
+	@color: @input-border-focus;
+	@color-rgba: rgba(red(@color), green(@color), blue(@color), .6);
+	border-radius: 0;
+	&:focus {
+		.box-shadow(~'inset 0 1px 1px rgba(0,0,0,.075), inset 0 0 8px @{color-rgba}');
+	}
+}
+
+/*
+
+large: playlist, video, chat
+medium: playlist, video; roominfo, chat;
+small: video; playlist, chat;
+x-small: video; chat; playlist; ?
+
+*/
+
+
+.navbar a {
+	@fadeDuration: 0.08s;
+	.transition(~'color @{fadeDuration} ease-out, background-color @{fadeDuration} ease-out');
+}

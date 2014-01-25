@@ -49,6 +49,7 @@ module.exports = function (grunt) {
 					sourceMap: true,
 					sourceMapFilename: 'static/style.css.map',
 					sourceMapURL: 'style.css.map',
+					outputSourceFiles: true,
 				},
 			},
 			dist: {
