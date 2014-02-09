@@ -1,0 +1,26 @@
+@import 'nanoscroller/bin/css/nanoscroller.less';
+
+@nanoClass: ~'nano';
+@paneClass: ~'nano-pane';
+@sliderClass: ~'nano-slider';
+@contentClass: ~'nano-content';
+
+@nano-padding-right: 1px;
+@nano-padding-left: 1px;
+@nano-padding-top: 1px;
+@nano-padding-bottom: 1px;
+
+.@{nanoClass} {
+	.@{contentClass} {
+		padding-right: (10px + @nano-padding-right + @nano-padding-left);
+	}
+	> .@{paneClass} {
+		background: @gray-even-darker;
+		margin-right: @nano-padding-right;
+		margin-top: @nano-padding-top;
+		margin-bottom: @nano-padding-bottom;
+		> .@{sliderClass} {
+			background: #333;
+		}
+	}
+}

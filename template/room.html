@@ -1,9 +1,213 @@
 {{> header.html}}
-<script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/0.9.16/socket.io.min.js"></script>
-<script src="/room.js"></script>
-<div class="container">
-  <div id="player-wrapper">
-    <div id="player"></div>
+
+<div class="room-content">
+  <div class="playlist-content">
+
+<div id="video-queue">
+  <div>
+
+<div class="panel-nav">
+  <a href="#video-queue-pane" data-toggle="tab">Video Queue</a>
+  <a href="#my-playlists-pane" data-toggle="tab">My Playlists</a>
+</div>
+
+    <div class="tab-content">
+      <div class="tab-pane active" id="video-queue-pane">
+
+<div class="nano" id="playlist-container">
+  <div class="nano-content">
+
+        <ol id="playlist" class="list-unstyled">
+          <li>Girls' Generation 소녀시대_I GOT A BOY_Music Video</li>
+          <li>Girls` Generation(소녀시대) _ Gee _ MusicVideo</li>
+          <li>Girls' Generation 소녀시대_THE BOYS_Music Video</li>
+          <li>Girls' Generation 소녀시대_Dancing Queen_Music Video</li>
+          <li>Girls' Generation 소녀시대_I GOT A BOY_Music Video</li>
+          <li>Girls` Generation(소녀시대) _ Gee _ MusicVideo</li>
+          <li>Girls' Generation 소녀시대_THE BOYS_Music Video</li>
+          <li>Girls' Generation 소녀시대_Dancing Queen_Music Video</li>
+          <li>Girls' Generation 소녀시대_I GOT A BOY_Music Video</li>
+          <li>Girls` Generation(소녀시대) _ Gee _ MusicVideo</li>
+          <li>Girls' Generation 소녀시대_THE BOYS_Music Video</li>
+          <li>Girls' Generation 소녀시대_Dancing Queen_Music Video</li>
+          <li>Girls' Generation 소녀시대_I GOT A BOY_Music Video</li>
+          <li>Girls` Generation(소녀시대) _ Gee _ MusicVideo</li>
+          <li>Girls' Generation 소녀시대_THE BOYS_Music Video</li>
+          <li>Girls' Generation 소녀시대_Dancing Queen_Music Video</li>
+          <li>Girls' Generation 소녀시대_I GOT A BOY_Music Video</li>
+          <li>Girls` Generation(소녀시대) _ Gee _ MusicVideo</li>
+          <li>Girls' Generation 소녀시대_THE BOYS_Music Video</li>
+          <li>Girls' Generation 소녀시대_Dancing Queen_Music Video</li>
+          <li>Girls' Generation 소녀시대_I GOT A BOY_Music Video</li>
+          <li>Girls` Generation(소녀시대) _ Gee _ MusicVideo</li>
+          <li>Girls' Generation 소녀시대_THE BOYS_Music Video</li>
+          <li>Girls' Generation 소녀시대_Dancing Queen_Music Video</li>
+          <li>Girls' Generation 소녀시대_I GOT A BOY_Music Video</li>
+          <li>Girls` Generation(소녀시대) _ Gee _ MusicVideo</li>
+          <li>Girls' Generation 소녀시대_THE BOYS_Music Video</li>
+          <li>Girls' Generation 소녀시대_Dancing Queen_Music Video</li>
+        </ol>
+
   </div>
 </div>
+
+      </div>
+      <div class="tab-pane" id="my-playlists-pane">
+
+<div class="nano" id="playlist-container">
+  <div class="nano-content">
+
+        <ol>
+          <li>Soshi! \o/</li>
+          <li>Soshi! \o/</li>
+          <li>Soshi! \o/</li>
+          <li>Soshi! \o/</li>
+          <li>Soshi! \o/</li>
+        </ol>
+
+  </div>
+</div>
+
+
+      </div>
+    </div>
+
+<div class="button-panel">
+  <button type="button" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-plus"></span></button>
+  <button type="button" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-repeat"></span></button>
+  <button type="button" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-random"></span></button>
+  <span class="small" id="playlist-stats"><span>129 videos (3:40:21)</span></span>
+</div>
+
+  </div>
+</div>
+
+  </div>
+  <div class="player-content">
+
+<div id="player-wrapper">
+  <div id="player" style="background-color: #020;">
+    {{! <img src="http://i1.ytimg.com/vi/gq0Ug11Avec/maxresdefault.jpg" class="img-responsive"> }}
+  </div>
+</div>
+
+  </div>
+  <div class="social-content">
+
+<div id="chat-messages">
+  <div>
+
+<div class="nano">
+  <div class="nano-content">
+    <ul class="list-unstyled" id="chat-log">
+      <li>
+        <span class="sender">Majiir</span>
+        <p class="message">This is a test message.</p>
+        <p class="message">This is another!</p>
+      </li>
+      <li>
+        <span class="sender">kaisest</span>
+        <p class="message">Shut up.</p>
+      </li>
+      <li>
+        <span class="sender">Majiir</span>
+        <p class="message">This is a test message.</p>
+        <p class="message">This is another!</p>
+      </li>
+      <li>
+        <span class="sender">kaisest</span>
+        <p class="message">Shut up.</p>
+      </li>
+      <li>
+        <span class="sender">Majiir</span>
+        <p class="message">This is a test message.</p>
+        <p class="message">This is another!</p>
+      </li>
+      <li>
+        <span class="sender">kaisest</span>
+        <p class="message">Shut up.</p>
+      </li>
+      <li>
+        <span class="sender">Majiir</span>
+        <p class="message">This is a test message.</p>
+        <p class="message">This is another!</p>
+      </li>
+      <li>
+        <span class="sender">kaisest</span>
+        <p class="message">Shut up.</p>
+      </li>
+      <li>
+        <span class="sender">Majiir</span>
+        <p class="message">This is a test message.</p>
+        <p class="message">This is another!</p>
+      </li>
+      <li>
+        <span class="sender">kaisest</span>
+        <p class="message">Shut up.</p>
+      </li>
+      <li>
+        <span class="sender">Majiir</span>
+        <p class="message">This is a test message.</p>
+        <p class="message">This is another!</p>
+      </li>
+      <li>
+        <span class="sender">kaisest</span>
+        <p class="message">Shut up.</p>
+      </li>
+      <li>
+        <span class="sender">Majiir</span>
+        <p class="message">This is a test message.</p>
+        <p class="message">This is another!</p>
+      </li>
+      <li>
+        <span class="sender">kaisest</span>
+        <p class="message">Shut up.</p>
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<form class="form">
+  <div class="form-group">
+    <label class="sr-only" for="chatInput">Chat message</label>
+    <input type="text" class="form-control input-sm" id="chatInput" placeholder="Type a message">
+  </div>
+</form>
+
+  </div>
+</div>
+
+  </div>
+  <div class="browse-content">
+    <div>
+
+
+
+    </div>
+  </div>
+
+</div>
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/0.9.16/socket.io.min.js"></script>
+{{! <script src="/room.js"></script> }}
+<script src="/jquery.nanoscroller.min.js"></script>
+<script>
+$(function() {
+  $('.nano').nanoScroller({
+    paneClass: 'nano-pane',
+    sliderClass: 'nano-slider',
+    contentClass: 'nano-content',
+    alwaysVisible: true,
+  });
+
+  /*
+  setInterval(function () {
+    $('#playlist li').first().remove();
+    $('.nano').nanoScroller();
+  }, 500);
+  //*/
+});
+</script>
 {{> footer.html}}

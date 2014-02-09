@@ -37,7 +37,11 @@ app.get('/rooms', function (req, res) {
 
 app.get('/rooms/:name', function (req, res) {
 	res.writeHead(200, { 'Content-Type': 'text/html; charset=utf8' });
-	render(res, 'room.html', {});
+	var room = rooms.get(req.params.name);
+	render(res, 'room.html', {
+		name: room.name,
+		connected: Object.keys(room.connected).length,
+	});
 });
 
 app.use(express.static(__dirname + '/static'));

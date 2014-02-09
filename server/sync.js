@@ -54,6 +54,21 @@ sockets.on('listen', function (io) {
 		['play', 'pause', 'seek', 'change'].forEach(function (emitter) {
 			runner.state.on(emitter, changed);
 		});
+
+		///
+
+		runner.options.loop = true;
+
+		var gee = new Video('U7mPqycQ0tQ');
+		var genie = new Video('6SwiSpudKWI');
+
+		metadata.load(gee, function (err) {
+			runner.playlist.push(gee);
+		});
+
+		metadata.load(genie, function (err) {
+			runner.cueVideo(runner.playlist.push(genie));
+		});
 	});
 
 	io.sockets.on('connection', function (socket) {

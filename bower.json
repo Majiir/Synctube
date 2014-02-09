@@ -1,6 +1,7 @@
 {
 	"name": "synctube",
 	"dependencies": {
+		"nanoscroller": "0.7.x",
 		"bootswatch": "3.0.x"
 	},
 	"private": true

@@ -1,3 +1,17 @@
 @navbar-default-link-hover-bg: @gray-even-darker;
 @navbar-default-link-active-bg: @gray-even-darker;
 @navbar-default-brand-hover-bg: @gray-even-darker;
+
+.navbar {
+	margin-bottom: 0;
+
+	& + * {
+		margin-top: @navbar-margin-bottom;
+	}
+
+	a.navbar-brand,
+	.navbar-nav > li > a {
+		@fadeDuration: 0.08s;
+		.transition(~'color @{fadeDuration} ease-out, background-color @{fadeDuration} ease-out');
+	}
+}

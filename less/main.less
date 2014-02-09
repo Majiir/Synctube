@@ -3,8 +3,245 @@
 @import 'bootswatch/cyborg/bootswatch.less';
 @import 'bootstrap/less/utilities.less';
 
+@icon-font-path: '//netdna.bootstrapcdn.com/bootstrap/3.0.3/fonts/';
+
 @gray-even-darker: #181818;
 
 @import 'brand.less';
 @import 'navbar.less';
 @import 'player.less';
+@import 'nanoscroller.less';
+
+#video-queue {
+	@media (max-width: @screen-md-max) {
+		.fixed-ratio (@playerAspectRatio * (3 / 9), 31px, 30px);	
+	}
+	@media (min-width: @screen-lg-min) {
+		.fixed-ratio (@playerAspectRatio * (2 / 8), 31px, 30px);
+	}
+
+	.tab-content,
+	.tab-pane {
+		height: 100%; // makes the tab panes expand to fill the space
+	}
+}
+
+@media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
+	#chat-log {
+		padding: 5px 10px 10px;
+		display: table;
+		& > li {
+			display: table-row;
+			.sender {
+				padding-right: 10px;
+				display: table-cell;
+			}
+			.message {
+				display: block;
+			}
+		}
+	}
+}
+
+#chat-messages {
+	@media (min-width: @screen-lg-min) {
+		.fixed-ratio (@playerAspectRatio * (2 / 8), 30px, 0);
+	}
+
+	& > * {
+		@media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
+			height: 200px;
+
+			.make-row(0);
+
+			.info-pane {
+				.make-md-column(3, 0);
+			}
+
+			.nano {
+				.make-md-column(9, 0);
+			}
+		}
+
+		.border-md(top, 1px solid @gray-dark);
+		.border-lg(left, 1px solid @gray-dark);
+
+		.nano {
+			.border-lg(bottom, 1px solid @gray-dark);
+		}
+	}
+}
+
+#video-queue {
+	& > * {
+		.border-md(right, 1px solid @gray-dark);
+		.border-lg(right, 1px solid @gray-dark);
+
+		.nano {
+			.border-md(bottom, 1px solid @gray-dark);
+
+			.border-lg(bottom, 1px solid @gray-dark);
+		}
+	}
+}
+
+.panel-nav {
+	height: 30px + 1px;
+	.border-lg(bottom, 1px solid @gray-dark);
+	padding: 4px 8px;
+	color: #fff;
+
+	&:before {
+	}
+}
+
+//.playlist-content,
+.player-content,
+.social-content {
+	.border-lg(bottom, 1px solid @gray-dark);
+}
+
+#chat-log {
+	padding: 0 10px;
+	margin-bottom: 0;
+
+	& > li {
+		margin: 10px 0;
+		.sender {
+			color: @headings-color;
+			display: block;
+		}
+		.message {
+			margin: 5px 0 0;
+		}
+	}
+}
+
+.fixed-ratio (@ratio, @bottom-padding: 0, @top-padding: 0) {
+	position: relative;
+	width: 100%;
+	padding-top: 100% / @ratio;
+
+	& > * {
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 100%;
+		width: 100%;
+		padding-bottom: @bottom-padding + @top-padding;
+	}
+}
+
+.room-content {
+	.make-row(0);
+	margin-top: 0;
+}
+
+.playlist-content {
+	.make-xs-column(12, 0);
+	.make-md-column(3, 0);
+	.make-lg-column(2, 0);
+}
+
+.player-content {
+	.make-xs-column(12, 0);
+	.make-md-column(9, 0);
+	.make-lg-column(8, 0);
+}
+
+.social-content {
+	.make-xs-column(12, 0);
+	.make-md-column(12, 0);
+	.make-lg-column(2, 0);
+}
+
+.browse-content {
+	.make-xs-column(12, 0);
+	min-height: 160px;
+	background-color: #400;
+}
+
+#playlist {
+	margin-bottom: 0;
+
+	& > li {
+		font-size: 12px;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+
+		padding: 5px;
+
+		&:nth-child(2n) {
+			background-color: rgba(255, 192, 128, 0.1);
+		}
+		&:nth-child(2n+1) {
+			background-color: rgba(128, 192, 255, 0.1);
+		}
+	}
+}
+
+//
+
+@paneHeight: 100px;
+
+.info-pane {
+	padding: 0 10px;
+	background-color: @gray-even-darker;
+	height: @paneHeight;
+	overflow: hidden;
+}
+
+.button-panel {
+	background-color: @gray-even-darker;
+	height: 30px + 1px;
+	padding: 4px;
+	.border-lg(bottom, 1px solid @gray-dark);
+}
+
+#playlist-stats {
+	float: right;
+	height: 22px;
+	display: table;
+	span {
+		vertical-align: middle;
+		display: table-cell;
+	}
+}
+
+#chatInput {
+	@color: @input-border-focus;
+	@color-rgba: rgba(red(@color), green(@color), blue(@color), .6);
+	border-radius: 0;
+	&:focus {
+		.box-shadow(~'inset 0 1px 1px rgba(0,0,0,.075), inset 0 0 8px @{color-rgba}');
+	}
+}
+
+
+// Responsive borders
+// -------------------------
+
+.border-xs(@side, @border) {
+	@media (max-width: @screen-xs-max) {
+		border-@{side}: @border;
+	}
+}
+
+.border-sm(@side, @border) {
+    @media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
+		border-@{side}: @border;
+	}
+}
+
+.border-md(@side, @border) {
+    @media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
+		border-@{side}: @border;
+	}
+}
+
+.border-lg(@side, @border) {
+    @media (min-width: @screen-lg-min) {
+		border-@{side}: @border;
+	}
+}
