@@ -184,3 +184,27 @@ Datastore.prototype.leave = function (room, cb) {
 Datastore.prototype.getUserCount = function (room, cb) {
 	client.zscore('rooms:counts', room, wrap(cb));
 };
+
+/**
+ * Garbage collection.
+ */
+
+function collect () {
+	client.srandmember('rooms:expired', function (err, room) {
+		if (err) { console.warn(err); return; }
+		if (!room) { return; }
+		scripts.run('collect', [
+			'rooms:expired',
+			'room:' + room + ':nodes',
+			'room:' + room + ':state',
+			'room:' + room + ':length',
+		], [room], function (err) {
+			if (err) { console.warn(err); return; }
+		});
+	});
+}
+
+setTimeout(function () {
+	collect();
+	setInterval(collect, 60 * 1000);
+}, 30 * 1000);
