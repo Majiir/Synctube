@@ -3,37 +3,59 @@
  */
 
 var events = require('events');
+var videojs = require('videojs');
+var $ = require('jquery');
+
+require('videojs-youtube');
 
 /**
- * YouTube player.
+ * Videojs player.
  */
 
-var tag = document.createElement('script');
-tag.src = 'https://www.youtube.com/iframe_api';
-var firstScriptTag = document.getElementsByTagName('script')[0];
-firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+var vjs;
 
-var youtube;
-window.onYouTubeIframeAPIReady = function () {
-	youtube = new YT.Player('player', {
-		playerVars: {
-			rel: 0,
-			showinfo: 0,
-		},
-		events: {
-			'onReady': onPlayerReady,
-			'onStateChange': onPlayerStateChange,
-		},
+$(function () {
+
+	vjs = videojs('player', {
+		techOrder: ['youtube'],
+		sources: [
+			{
+				type: 'video/youtube',
+				src: 'https://www.youtube.com/watch?v=qEYOyZVWlzs',
+			},
+		],
 	});
-};
 
-function onPlayerReady (event) {
-	player.emit('ready');
-}
 
-function onPlayerStateChange (event) {
-	player.emit('change');
-}
+	vjs.ready(function () {
+
+		player.emit('ready');
+
+		vjs.on('pause', change);
+		vjs.on('play', change);
+		vjs.on('seeked', change);
+
+		function change () {
+			player.emit('change');
+		}
+
+	});
+
+/**
+ * TODO:
+ *
+ * Player reacts to sync module events--and that's it.
+ * Player does not export anything.
+ * Sync-to-player logic all happens in this module.
+ * Syncing logic might be simplified if we can remove controls--that way we only
+ *   have to worry about buffering and clock drift stuff.
+ * Investigative items:
+ *   - How the heck do we query and control this player? The API isn't too well documented.
+ *   - How do we switch between videos? Can we queue them up and 'preload' videos?
+ *   - How do we get YouTube support back? Does that plugin still work?
+ */
+
+});
 
 /**
  * Player module interface.
@@ -41,29 +63,29 @@ function onPlayerStateChange (event) {
 
 var player = module.exports = exports = {
 	play: function () {
-		youtube.playVideo();
+		vjs.play();
 	},
 	pause: function () {
-		youtube.pauseVideo();
+		vjs.pause();
 	},
 	seek: function (time) {
-		youtube.seekTo(time + (this.isPlaying() ? 0.5 : 0), true);
+		vjs.currentTime(time + (this.isPlaying() ? 0.5 : 0));
 	},
 	load: function (video, time) {
-		youtube.loadVideoById(video.id, time);
+		//youtube.loadVideoById(video.id, time);
 	},
 	getVideo: function () {
-		var data = youtube.getVideoData();
-		return data ? data.video_id : null;
+		//var data = youtube.getVideoData();
+		//return data ? data.video_id : null;
 	},
 	getTime: function () {
-		return youtube.getCurrentTime();
+		//return youtube.getCurrentTime();
 	},
 	isPlaying: function () {
-		return youtube.getPlayerState() === YT.PlayerState.PLAYING;
+		//return youtube.getPlayerState() === YT.PlayerState.PLAYING;
 	},
 	isEnded: function () {
-		return youtube.getPlayerState() === YT.PlayerState.ENDED;
+		//return youtube.getPlayerState() === YT.PlayerState.ENDED;
 	},
 };
 

@@ -1,16 +1,20 @@
 {>"container.html"/}
 {+header}
 <script src="//cdn.socket.io/socket.io-{socketioClientVersion}.js"></script>
+<link href="//vjs.zencdn.net/5.0.0/video-js.css" rel="stylesheet">
 {/header}
 {+bodyScripts}
-<script src="/room.min.js"></script>
+<script src="//vjs.zencdn.net/5.0.0/video.js"></script>
+<script src="/room.js"></script>
 {/bodyScripts}
 {+bodyContent}
 <div class="container-fluid">
   <div class="row">
     <div class="col-lg-8 col-lg-push-2 col-sm-12">
       <div class="embed-responsive embed-responsive-16by9">
-        <div class="embed-responsive-item" id="player"></div>
+        <video id="player" class="embed-responsive-item video-js vjs-default-skin" controls preload="auto">
+          
+        </video>
       </div>
       <div data-bind="with: controls">
         <form class="form-horizontal" data-bind="submit: seek">
