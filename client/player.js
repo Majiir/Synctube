@@ -16,20 +16,11 @@ var vjs;
 
 $(function () {
 
-	vjs = videojs('player', {
-		techOrder: ['youtube'],
-		sources: [
-			{
-				type: 'video/youtube',
-				src: 'https://www.youtube.com/watch?v=qEYOyZVWlzs',
-			},
-		],
-	});
+	videojs('player', {
+		techOrder: ['html5', 'youtube'],
+	}).ready(function () {
 
-
-	vjs.ready(function () {
-
-		player.emit('ready');
+		vjs = this;
 
 		vjs.on('pause', change);
 		vjs.on('play', change);
@@ -38,6 +29,8 @@ $(function () {
 		function change () {
 			player.emit('change');
 		}
+
+		player.emit('ready');
 
 	});
 
@@ -61,6 +54,8 @@ $(function () {
  * Player module interface.
  */
 
+var _current = null;
+
 var player = module.exports = exports = {
 	play: function () {
 		vjs.play();
@@ -72,20 +67,20 @@ var player = module.exports = exports = {
 		vjs.currentTime(time + (this.isPlaying() ? 0.5 : 0));
 	},
 	load: function (video, time) {
-		//youtube.loadVideoById(video.id, time);
+		_current = video.id;
+		vjs.src({ type: 'video/youtube', src: 'https://www.youtube.com/watch?v=' + video.id });
 	},
 	getVideo: function () {
-		//var data = youtube.getVideoData();
-		//return data ? data.video_id : null;
+		return _current;
 	},
 	getTime: function () {
-		//return youtube.getCurrentTime();
+		return vjs.currentTime();
 	},
 	isPlaying: function () {
-		//return youtube.getPlayerState() === YT.PlayerState.PLAYING;
+		return !vjs.paused();
 	},
 	isEnded: function () {
-		//return youtube.getPlayerState() === YT.PlayerState.ENDED;
+		return vjs.ended();
 	},
 };
 
