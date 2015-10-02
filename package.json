@@ -20,6 +20,7 @@
         "safesocket": "^1.0.0",
         "socket.io": "^1.3.5",
         "videojs-youtube": "^1.2.13",
+        "videojs-dailymotion": "^1.1.0",
         "express": "^4.13.3"
     },
     "devDependencies": {
@@ -43,6 +44,7 @@
     },
     "browser": {
         "./config.js": "./config-client.js",
+        "videojs-dailymotion": "videojs-dailymotion/dist/vjs.dailymotion",
         "request": "browser-request"
     },
     "browserify-shim": {
