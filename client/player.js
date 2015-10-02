@@ -15,23 +15,6 @@ var vjs;
 $(function () {
 	vjs = videojs('player', {
 		techOrder: media.getTechnologies(),
-		children: {
-			bigPlayButton: false,
-			controlBar: {
-				children: {
-					playToggle: false,
-					progressControl: {
-						children: {
-							seekBar: {
-								children: {
-									seekHandle: false,
-								},
-							},
-						},
-					},
-				},
-			},
-		},
 	}, function () {
 		function change () {
 			process.nextTick(function () {
